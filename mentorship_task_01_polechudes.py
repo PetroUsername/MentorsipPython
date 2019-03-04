@@ -45,6 +45,7 @@ def play_game():
     masked_word = '_ ' * len(word_to_guess)
 
     print('Great! Now we have the word to guess: ', masked_word)
+    print("If you'd like to quit, please enter word 'quit' instead of letter anytime")
 
     # here we start actually playing, we read letter entered by user and reveal it if guess is correct
     # game continues while there there is at least 1 letter that was not guessed
