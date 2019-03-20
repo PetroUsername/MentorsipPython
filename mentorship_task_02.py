@@ -2,7 +2,7 @@ input_file = open('log_data.txt')
 
 
 def get_tot_download_dict(input_log):
-    ip_downloads = dict()
+    ip_downloads = {}
 
     for line in input_log:
         line_list = line.split()
@@ -16,7 +16,7 @@ def get_tot_download_dict(input_log):
 
 
 def get_hours_requests_dict(input_log):
-    hours_downloads = dict()
+    hours_downloads = {}
 
     for line in input_log:
         line_list = line.split()
