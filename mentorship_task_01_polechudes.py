@@ -7,23 +7,24 @@ def guess_letter(entered_letter, before_guess, word):
     i = 0
     for letter in word:
         if letter == entered_letter:
-            before_guess = before_guess[:i] + entered_letter + before_guess[i+1:]
+            before_guess = before_guess[:i] + entered_letter + before_guess[i + 1:]
         i += 2
     if entered_letter not in word:
         print('No luck, the letter "' + entered_letter + '" is not in this word. Try again.')
     return before_guess
 
+
 # defining function that has all the actions in game
 
 def play_game():
-
     print('Hello user! Let\'s play a game of Pole Chudes')
 
     # ask user to select the number and save it, number will correspond to line in words dictionary
     # when empty response received random number will be selected
 
     while True:
-        selected_number = input('Please enter any integer number to select a word or just press \'Enter\' and word will be selected randomly: ')
+        selected_number = input(
+            'Please enter any integer number to select a word or just press \'Enter\' and word will be selected randomly: ')
         try:
             if len(selected_number) == 0:
                 selected_number = random.randint(0, len(words))
@@ -52,7 +53,7 @@ def play_game():
 
     attempts_no = 0
     while '_' in masked_word:
-        user_letter=input('Please enter the letter: ')
+        user_letter = input('Please enter the letter: ')
         if user_letter.upper() == 'QUIT':
             break
         elif len(user_letter) > 1:
@@ -65,10 +66,12 @@ def play_game():
             attempts_no += 1
 
     if user_letter.upper() == 'QUIT':
-        print('So sorry to see you quit :(. You gave up after', str(attempts_no), 'attempts.\nIf you would like to try the same word later it\'s number is', str(selected_number) + '.')
+        print('So sorry to see you quit :(. You gave up after', str(attempts_no),
+              'attempts.\nIf you would like to try the same word later it\'s number is', str(selected_number) + '.')
     else:
         print('\nGreat job! You guessed the word', word_to_guess, 'in', str(attempts_no), 'attempts. Congratulations!')
-        print('This word has number', str(selected_number) + '.', 'Note this number so you can ask your friends to guess the same word later.\n\nLet\'s see how many attempts they use ;)')
+        print('This word has number', str(selected_number) + '.',
+              'Note this number so you can ask your friends to guess the same word later.\n\nLet\'s see how many attempts they use ;)')
 
 
 # opening the file and reading all the words
@@ -79,6 +82,5 @@ try:
     words = inp_dict.readlines()
     play_game()
 except:
-    print('Looks like file with words for the game is missing from the folder.\nPlease make sure to have dict.txt file within the same folder as a game itself.')
-
-
+    print(
+        'Looks like file with words for the game is missing from the folder.\nPlease make sure to have dict.txt file within the same folder as a game itself.')
