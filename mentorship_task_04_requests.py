@@ -12,9 +12,10 @@ parser.add_argument('-p', '--project', required=True,
 args = parser.parse_args()
 
 response = requests.get(
-    'https://api.github.com/repos/' + str(args.user) + '/' + str(args.project) + '/contributors'
+    'https://api.github.com/repos/%s/%s/contributors' % (str(args.user), str(args.project))
 )
-os.makedirs('mentorship_task_04_requests_output/' + str(args.user) + '/' + str(args.project), mode=0o777, exist_ok=True)
+dir_path = 'mentorship_task_04_requests_output/%s/%s' % (str(args.user), str(args.project))
+os.makedirs(dir_path, mode=0o777, exist_ok=True)
 
 json_response = response.json()
 contributors_counter = 0
@@ -29,8 +30,8 @@ for contributor in json_response:
     else:
         f = ''
     r = r.raw.read()
-    with open('mentorship_task_04_requests_output/' + str(args.user) + '/' + str(args.project) + '/' + contributor[
-        'login'] + f, 'wb') as fd:
+    file_path = 'mentorship_task_04_requests_output/%s/%s/%s%s' % (str(args.user), str(args.project), contributor['login'], f)
+    with open(file_path, 'wb') as fd:
         fd.write(r)
     print('Image for', contributor[
         'login'], 'is saved')
