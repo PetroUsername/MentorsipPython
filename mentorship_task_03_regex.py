@@ -25,7 +25,7 @@ def list_phone_numbers(text_file):
     return l
 
 
-def get_paterns_dict(csv_file):
+def get_patterns_dict(csv_file):
     d = {}
     for row in csv_file:
         d[row['number_pattern']] = row['provider']
@@ -37,7 +37,7 @@ def filter_codes(file, providers):
     with open(file, newline='', encoding="utf8") as csvfile:
         d = {}
         reader = csv.DictReader(csvfile)
-        pattern_dict = get_paterns_dict(reader)
+        pattern_dict = get_patterns_dict(reader)
         for pattern in pattern_dict:
             if providers is None or pattern_dict[pattern] in providers:
                 d[re.sub(r'\s', '', pattern)] = pattern_dict[pattern]
