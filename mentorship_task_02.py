@@ -1,5 +1,6 @@
 input_file = open('log_data.txt')
 
+# use "with open" to have file closed automatically
 
 def get_tot_download_dict(input_log):
     ip_downloads = {}
@@ -13,6 +14,7 @@ def get_tot_download_dict(input_log):
     input_log.seek(0)
 
     return ip_downloads
+# collections module can be used
 
 
 def get_hours_requests_dict(input_log):
